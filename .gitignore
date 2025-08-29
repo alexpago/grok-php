@@ -1,0 +1,6 @@
+vendor/
+.idea
+.vscode
+command.php
+.env
+.DS_Store

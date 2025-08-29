@@ -1,0 +1,61 @@
+{
+    "name": "alexpago/grok-php",
+    "description": "Grok AI (x.ai)",
+    "version": "1.0.0",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/alexpago/grok-php",
+    "keywords": [
+        "grok",
+        "grok ai",
+        "grok ai api",
+        "grok ai sdk",
+        "grok ai client",
+        "grok ai php",
+        "grok ai php sdk",
+        "grok ai php client",
+        "grok ai php sdk",
+        "x.ai",
+        "ai",
+        "chat",
+        "chatgpt",
+        "api",
+        "grok-php",
+        "grok-ai",
+        "grok-php-sdk",
+        "grok-php-client",
+        "grok-php-sdk",
+        "grok-chat",
+        "grok-chat-api",
+        "grok-chat-sdk",
+        "grok-chat-client",
+        "grok-chat-php",
+        "grok-chat-php-sdk",
+        "grok-chat-php-client"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pago\\Grok\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pago\\Grok\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alex Pago",
+            "homepage": "https://github.com/alexpago"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "require-dev": {
+        "larapack/dd": "dev-master",
+        "phpunit/phpunit": "^10",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
