@@ -1,7 +1,7 @@
 {
     "name": "alexpago/grok-php",
     "description": "PHP library for interacting with the Grok API. Supports: grok-3, grok-3-mini, grok-4, grok-2-image (and other models).",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "library",
     "license": "MIT",
     "homepage": "https://github.com/alexpago/grok-php",
