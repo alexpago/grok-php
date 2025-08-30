@@ -12,7 +12,7 @@ namespace Pago\Grok\Enums;
 enum Model: string
 {
     case GROK_3 = 'grok-3';
-    case GROK_3_MINIT = 'grok-3-mini';
+    case GROK_3_MINI = 'grok-3-mini';
     case GROK_4 = 'grok-4';
     case GROK_4_0709 = 'grok-4-0709';
 
