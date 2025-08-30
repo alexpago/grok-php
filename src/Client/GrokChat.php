@@ -154,7 +154,7 @@ final class GrokChat
             // Oops. Something went wrong.
             $code = $e->getCode();
             $message = $e->getMessage();
-            return new ChatErrorResponse($code, $message);
+            return new ChatErrorResponse($code, $message, true, $e);
         }
     }
 

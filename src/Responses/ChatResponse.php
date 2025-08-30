@@ -2,31 +2,13 @@
 
 namespace Pago\Grok\Responses;
 
+use Pago\Grok\Responses\Success\SuccessResponse;
+
 /**
  * Grok chat response.
  */
-final class ChatResponse
+final class ChatResponse extends SuccessResponse
 {
-    /**
-     * @var array
-     */
-    public array $data;
-    
-    /**
-     * @param string $json The JSON response.
-     */
-    public function __construct(string $json)
-    {
-        // 1. Decode the JSON.
-        $decoded = json_decode($json, true);
-        if (false === $decoded) {
-            throw new \Exception('Invalid JSON: ' . json_last_error_msg());
-        }
-
-        // 2. Set the data.
-        $this->data = $decoded;
-    }
-
     /**
      * Get the ID response.
      * @return string|null
@@ -102,14 +84,5 @@ final class ChatResponse
             'message' => $this->getMessage(),
             'usage'   => $this->getUsage(),
         ];
-    }
-
-    /**
-     * Get the response as a JSON string.
-     * @return string
-     */
-    public function toJson(): string
-    {
-        return json_encode($this->toArray(), JSON_UNESCAPED_UNICODE);
     }
 }

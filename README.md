@@ -5,7 +5,7 @@ It provides a simple, object-oriented interface for sending chat messages, manag
 
 ---
 
-## Features
+## ✨ Features
 - Supports: grok-3, grok-3-mini, grok-4, grok-2-image (and other models)
 - Simple API for sending chat messages:
   ```php
@@ -27,6 +27,12 @@ It provides a simple, object-oriented interface for sending chat messages, manag
     text: 'Describe the image'
   )
 ```
+
+- Supports image generation
+```php
+  $generate->generate('A beautiful sunset over a calm ocean')->getImage()
+```
+
 - Streaming responses with custom handlers:
 
   ```php
@@ -164,7 +170,20 @@ $describe = $chat->send();
 
 ---
 
-### 6. Streaming Results
+### 6. Image generation
+
+To generate an image, use `GrokImageGeneration` class instead of GrokChat.
+
+```php
+use Pago\Grok\Client\GrokImageGeneration;
+
+$chat = new GrokImageGeneration('apikey');
+$image = $generate->generate('A beautiful sunset over a calm ocean')->getImage();
+```
+
+---
+
+### 7. Streaming Results
 
 Use a custom callback to process streaming chunks:
 
