@@ -8,6 +8,7 @@ use Pago\Grok\Client\GrokChat;
 use Pago\Grok\Responses\ChatResponse;
 use Pago\Grok\Responses\ChatErrorResponse;
 use Pago\Grok\Enums\Role;
+use Pago\Grok\Enums\ImageDetail;
 
 /**
  * Grok chat test.
@@ -72,6 +73,20 @@ class GrokChatTest extends TestCase
     {
         $response = $this->service->query('Write me: hello')->send();
         $this->assertStringContainsStringIgnoringCase('hello', $response);
+    }
+
+    /**
+     * Test the query image.
+     */
+    public function testQueryImageSuccess()
+    {
+        $response = $this->service->queryImage(
+            'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+            ImageDetail::LOW,
+            'Describe the image'
+        )->run();
+        $this->assertInstanceOf(ChatResponse::class, $response);
+        $this->assertStringContainsStringIgnoringCase('Google', $response->getContent());
     }
 
     /**

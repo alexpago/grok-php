@@ -6,7 +6,7 @@ It provides a simple, object-oriented interface for sending chat messages, manag
 ---
 
 ## Features
-- Support Grok 3, 4+
+- Supports: grok-3, grok-3-mini, grok-4, grok-2-image (and other models)
 - Simple API for sending chat messages:
   ```php
   $chat->query('Hello world')->run();
@@ -19,6 +19,14 @@ It provides a simple, object-oriented interface for sending chat messages, manag
        ->query('Who are you?')
        ->run();
   ```
+
+- Supports image understanding
+```php
+  $chat->queryImage(
+    image: '<external URL or base64>', 
+    text: 'Describe the image'
+  )
+```
 - Streaming responses with custom handlers:
 
   ```php
@@ -136,7 +144,27 @@ $responseData = $response->toArray();
 
 ---
 
-### 5. Streaming Results
+### 5. Image understanding
+
+You can use the `queryImage` method to use "Grok Understanding". First argument accepts an external image URL or a base64-encoded string.
+Support only JPEG and PNG formats are supported. Maximum size is 20 MB.
+
+```php
+use Pago\Grok\Client\GrokChat;
+use Pago\Grok\Enums\ImageDetail;
+
+$chat = new GrokChat('apikey');
+$chat = $chat->queryImage(
+    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', 
+    ImageDetail::LOW,
+    'Describe the image'
+);
+$describe = $chat->send();
+```
+
+---
+
+### 6. Streaming Results
 
 Use a custom callback to process streaming chunks:
 

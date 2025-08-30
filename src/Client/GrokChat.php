@@ -12,6 +12,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Pago\Grok\Responses\ChatResponse;
 use Pago\Grok\Responses\ChatErrorResponse;
 use Pago\Grok\Enums\Uri;
+use Pago\Grok\Enums\ImageDetail;
 
 /**
  * Grok chat.
@@ -52,6 +53,42 @@ final class GrokChat
             'role' => $role instanceof Role ? $role->value : $role,
             'content' => $content,
         ];
+        return $this;
+    }
+
+    /**
+     * Query an image.
+     * @param string $image External URL of the image or base64-encoded image data. PNG or JPEG only. Maximum size: 20MB.
+     * @param ImageDetail $imageDetail Optional image detail level (default: MEDIUM).
+     * @param string $text Optional text to accompany the image (example: 'Describe the image').
+     * @param Role|string $role Optional role (default: USER).
+     * @return self
+     */
+    public function queryImage(
+        string $image,
+        ImageDetail $imageDetail = ImageDetail::MEDIUM,
+        string $text = '',
+        Role|string $role = Role::USER
+    ): self {
+        $message = [
+            'role' => $role instanceof Role ? $role->value : $role,
+            'content' => [
+                [
+                    'type' => 'image_url',
+                    'image_url' => [
+                        'url' => $image,
+                        'detail' => $imageDetail->value,
+                    ]
+                ]
+            ],
+        ];
+        if ($text) {
+            $message['content'][] = [
+                'type' => 'text',
+                'text' => $text,
+            ];
+        }
+        $this->messages[] = $message;
         return $this;
     }
 
